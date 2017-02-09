@@ -7,8 +7,14 @@ import java.util.Set;
 import java.util.List;
 import java.util.Collections;
 
+/** Contains methods to determine whether a word is a palindrome and to generate all combinations of a String array of words.
+ ** @author David Roche
+ **/
 public class Palindrome {
-	
+	/** Iterates through each individual entry in the passed in String array and generates combinations recursively
+	 ** using the {@link Palindrome#getCombinations}
+	 ** @param words {@link String[]} - The passed in array of words to generate a list of combinations of.
+	 **/
 	public List<String> getCombinations(String[] words) {
 		// Use a Set internally so we don't have any duplicate entries.
         Set<String> distinctCombinations = new HashSet<String>();
@@ -31,7 +37,16 @@ public class Palindrome {
 			});
         return sortedCombinations;
     }
-	public void recurse (String prefix, List<String> remaining, Set<String> combinations) {
+	/** Recursive function that will traverse through the list of remaining Strings to add to the 
+	 ** previously generated String.
+	 ** @param prefix {@link String} - The last added String generated, which will have the remaining Strings 
+	 **											  added to it.
+	 ** @param remaining {@link List<String>} The list of the remaining Strings from the original array that haven't
+	 **											  been joined with the prefix yet.
+	 ** @param combinations {@link Set<String>} The Set of already generated combinations. Passed through by 
+	 ** 											  reference into every pass of the recursive method to add each combination generated.
+	 **/
+	private void recurse (String prefix, List<String> remaining, Set<String> combinations) {
 		// For each remaining word, append it to the passed in prefix, add it to the Set, remove that word
 		// from the pool of words and recurse the function.
         for(String word : remaining) {
@@ -42,7 +57,10 @@ public class Palindrome {
             recurse(tempPrefix, tempRemaining, combinations);
         }
     }
-	
+	/** Checks a word to see if it is a palindrome. A palindrome is any word that can be spelled the same 
+	 ** backword as it is forward. Returns true if the word is a palindrome.
+	 ** @param word {@link String} - The word to test if it is or is not a palindrome.
+	 **/
 	public boolean isPalindrome(String word) {
 		 // Make sure all chars in the String are in the same case.
         String normalisedWord = word.toLowerCase();
