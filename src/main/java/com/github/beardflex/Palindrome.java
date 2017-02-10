@@ -12,8 +12,9 @@ import java.util.Collections;
  **/
 public class Palindrome {
     /** Iterates through each individual entry in the passed in String array and generates combinations recursively
-     ** using the {@link Palindrome#getCombinations}
+     ** using the private {@link Palindrome#recurse} method.
      ** @param words {@link String[]} - The passed in array of words to generate a list of combinations of.
+     ** @return {@link List}&lt;{@link String}&gt; - A sorted array of all combinations of the passed in words.
      **/
     public List<String> getCombinations(String[] words) {
         // Use a Set internally so we don't have any duplicate entries.
@@ -41,9 +42,9 @@ public class Palindrome {
      ** previously generated String.
      ** @param prefix {@link String} - The last added String generated, which will have the remaining Strings 
      **                                              added to it.
-     ** @param remaining {@link List<String>} The list of the remaining Strings from the original array that haven't
+     ** @param remaining {@link List}&lt;{@link String}&gt; The list of the remaining Strings from the original array that haven't
      **                                              been joined with the prefix yet.
-     ** @param combinations {@link Set<String>} The Set of already generated combinations. Passed through by 
+     ** @param combinations {@link Set}&lt;{@link String}&gt; The Set of already generated combinations. Passed through by 
      **                                               reference into every pass of the recursive method to add each combination generated.
      **/
     private void recurse (String prefix, List<String> remaining, Set<String> combinations) {
@@ -58,8 +59,9 @@ public class Palindrome {
         }
     }
     /** Checks a word to see if it is a palindrome. A palindrome is any word that can be spelled the same 
-     ** backword as it is forward. Returns true if the word is a palindrome.
+     ** backword as it is forward.
      ** @param word {@link String} - The word to test if it is or is not a palindrome.
+     ** @return <b>boolean</b> True if the word is a palindrome, false if it is not.
      **/
     public boolean isPalindrome(String word) {
          // Make sure all chars in the String are in the same case.

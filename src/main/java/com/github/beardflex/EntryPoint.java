@@ -25,12 +25,14 @@ public class EntryPoint {
             // Generate the List of combinations of the passed in words.
             List<String> combos = palindrome.getCombinations(programArgs);
             
-            // Print out the original passed in words along with their combinations.
+            // Print out the original passed in words..
             System.out.printf("Received %d words. Words: \n", programArgs.length);
             for(String word : programArgs) {
                 System.out.printf("\t * %s\n", word);
             }
+            // Tell the user how many combinations were generated.
             System.out.printf("Computed %d combinations.\n", combos.size());
+            // If the user supplied the '--show-combinations' switch, print out all the computed combinations.
             if(showCombinations) {
                 System.out.printf("Combinations: \n");
                 for(String combo : combos) {
@@ -49,6 +51,7 @@ public class EntryPoint {
     /** Checks the cmd line supplied args for option switches, set's their flag if found
      ** and returns the list of String arguments without the option switches.
      ** @param args {@link String} - The cmd line supplied String array of arguments.
+     ** @return {@link String[]} - The clean list of args minus cmd line options.
      **/
     public static String[] getArgs(String[] args) {
         List<String> argList = new ArrayList<String>();
